@@ -7,7 +7,10 @@ import argparse
 import os
 import subprocess
 import re
+#from contracts import contract,new_contract
 
+KB = 1024
+HALF_KB = 512
 
 # ==== Arguments ====
 
@@ -41,11 +44,11 @@ def subprocess_check_output(command):
 
 
 def bytes_to_readable(blocks):
-    byts = blocks * 512
+    byts = blocks * HALF_KB
     readable_bytes = byts
     count = 0
-    while readable_bytes / 1024:
-        readable_bytes /= 1024
+    while readable_bytes / KB:
+        readable_bytes /= KB
         count += 1
 
     labels = ['B', 'Kb', 'Mb', 'Gb', 'Tb']
